@@ -6,9 +6,15 @@
     <Nullable>enable</Nullable>
 
     <PackageId>RickNeeftDevelopment.Top2000App.Data</PackageId>
-    <Version>1.0.0-prerelease1</Version>
-    <Author>Rick Neeft</Author>
+    <Description>Include a client database and sql script for setting op an application with the Dutch Top2000 data</Description>
+    <Copyright>Copyright (c) Rick Neeft Development 2024</Copyright>
+    <PackageProjectUrl>https://github.com/Top2000app</PackageProjectUrl>
+    <Version>1.0.0-alpha</Version>
+    <Authors>Rick Neeft</Authors>
     <Product>Top2000App Data</Product>
+    <PackageIconUrl>https://github.com/Top2000app/data/blob/init/docs/nugeticon.png</PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/Top2000app/data/blob/main/LICENSE</PackageLicenseUrl>
+    <PackageTags>Top2000 Top2000App</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
