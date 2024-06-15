@@ -41,5 +41,5 @@ jobs:
       if: github.event_name != 'pull_request'
 
     - name: Publish Nuget
-      run: otnet nuget push '${{github.workspace}}/nupkg/*.nupkg' -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+      run: dotnet nuget push '${{github.workspace}}/nupkg/*.nupkg' -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
       if: github.event_name != 'pull_request'
