@@ -1,4 +1,6 @@
-﻿namespace Top2000.Data.Tests;
+﻿using FluentAssertions;
+using Top2000.Data;
+namespace Top2000.Data.Tests;
 
 [TestClass]
 public class Top2000DataTests
