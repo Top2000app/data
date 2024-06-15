@@ -4,7 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-
+    <UseRidGraph>true</UseRidGraph>
+    
     <PackageId>RickNeeftDevelopment.Top2000App.Data</PackageId>
     <Description>Include a client database and sql script for setting op an application with the Dutch Top2000 data</Description>
     <Copyright>Copyright (c) Rick Neeft Development 2024</Copyright>
