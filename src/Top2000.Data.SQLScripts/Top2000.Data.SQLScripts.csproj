@@ -8,10 +8,9 @@
     <PackageId>RickNeeftDevelopment.Top2000App.Data.SQLScripts</PackageId>
     <Description>The SQLScripts containing the data for the Dutch Top2000 App</Description>
     <Deterministic>true</Deterministic>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright>Copyright (c) Rick Neeft Development 2024</Copyright>
     <PackageProjectUrl>https://github.com/Top2000app</PackageProjectUrl>
-    <Version>1.0.0-alpha2</Version>
+    <Version>1.0.0</Version>
     <Authors>Rick Neeft</Authors>
     <Product>Top2000App Data</Product>
     <PackageIcon>nugeticon.png</PackageIcon>

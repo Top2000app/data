@@ -20,9 +20,26 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+
     - name: Restore dependencies
       run: dotnet restore
+
     - name: Build
       run: dotnet build --no-restore
+
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    
+    - name: Pack
+      run: dotnet pack -o '${{github.workspace}}\nupkg' --no-build
+    
+    - name: Publish App disk artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: Code
+        path: nupkg
+      if: github.event_name != 'pull_request'
+
+    - name: Publish Nuget
+      run: otnet nuget push '${{github.workspace}}\nupkg\*.nupkg' -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+      if: github.event_name != 'pull_request'
