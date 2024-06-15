@@ -28,8 +28,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\Top2000.Data.SQLScripts\Top2000Data.cs" Link="Top2000Data.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
     <None Include="..\..\docs\nugeticon.png" Pack="true" PackagePath="\" />
+    <EmbeddedResource Include="..\Top2000.Data.SQLScripts\sql\*.sql" LinkBase="sql" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,7 +44,10 @@
     <PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
     <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
     <PackageReference Include="System.Text.Json" Version="8.0.3" />
-    <PackageReference Include="RickNeeftDevelopment.Top2000App.Data.SQLScripts" Version="1.0.0-alpha2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="sql\" />
   </ItemGroup>
 
 </Project>
