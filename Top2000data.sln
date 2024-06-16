@@ -22,6 +22,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Top2000.Data.SQLScripts", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Top2000.Data.SQLScripts.Unittests", "tests\Top2000.Data.SQLScripts.Unittests\Top2000.Data.SQLScripts.Unittests.csproj", "{B0A0B3DB-5F92-4A8D-80C7-384F6E01B25E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Top2000.Data.StaticDataSiteGenerator", "src\Top2000.Data.StaticDataSiteGenerator\Top2000.Data.StaticDataSiteGenerator.csproj", "{1E99D1EF-B6B0-483F-8CB9-A63A10287E04}"
+EndProject
 Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {13A925DD-5DDB-40C6-B878-4EEBBA3FE333}
@@ -31,6 +33,10 @@ Global
 		{F0715330-EADD-49C0-8D7A-0D2A1CCD8226} = {AF3BFB68-9DEE-4574-B5E3-662D8CD61A74}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E99D1EF-B6B0-483F-8CB9-A63A10287E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E99D1EF-B6B0-483F-8CB9-A63A10287E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E99D1EF-B6B0-483F-8CB9-A63A10287E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E99D1EF-B6B0-483F-8CB9-A63A10287E04}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3369A9AA-59D2-43F8-AC5B-174616EEEF9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3369A9AA-59D2-43F8-AC5B-174616EEEF9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3369A9AA-59D2-43F8-AC5B-174616EEEF9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
