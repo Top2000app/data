@@ -36,7 +36,7 @@ public class OnlineDataSource : ISource
     public async Task<SqlScript> ScriptContentsAsync(string scriptName)
     {
         var httpClient = httpClientFactory.CreateClient("top2000");
-        var requestUri = $"data/{scriptName}";
+        var requestUri = $"sql/{scriptName}";
 
         var response = await httpClient.GetAsync(requestUri).ConfigureAwait(false);
         response.EnsureSuccessStatusCode();
@@ -51,7 +51,7 @@ public class OnlineDataSource : ISource
         try
         {
             var httpClient = httpClientFactory.CreateClient("top2000");
-            var requestUri = $"api/versions/{latestVersion}/upgrades";
+            var requestUri = $"versions/{latestVersion}/upgrades";
             var response = await httpClient.GetAsync(requestUri).ConfigureAwait(false);
 
             response.EnsureSuccessStatusCode();
