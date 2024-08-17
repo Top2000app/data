@@ -51,7 +51,7 @@ public class OnlineDataSourceTests
 
         var scripts = await sut.ExecutableScriptsAsync(journals);
 
-        var expectedUri = new Uri("http://unittest:2000/api/versions/002/upgrades");
+        var expectedUri = new Uri("http://unittest:2000/versions/002/upgrades");
 
         messageMock.Protected()
             .Verify("SendAsync", Times.Once(),
@@ -72,7 +72,7 @@ public class OnlineDataSourceTests
 
         var script = await sut.ScriptContentsAsync("002-Script2.sql");
 
-        var expectedUri = new Uri("http://unittest:2000/data/002-Script2.sql");
+        var expectedUri = new Uri("http://unittest:2000/sql/002-Script2.sql");
 
         messageMock.Protected()
            .Verify("SendAsync", Times.Once(),
