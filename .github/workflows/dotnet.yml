@@ -1,13 +1,10 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
 name: .NET
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: none
 
 jobs:
   build:
@@ -43,3 +40,22 @@ jobs:
     - name: Publish Nuget
       run: dotnet nuget push '${{github.workspace}}/nupkg/*.nupkg' -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
       if: github.event_name != 'pull_request'
+
+    - name: Run
+      run: dotnet run --no-build --verbosity normal --project /src/Top2000.Data.StaticDataSiteGenerator/
+    
+    - name: Upload pages artifact
+      uses: actions/upload-pages-artifact@v1
+
+
+deploy:
+  environment:
+    name: github-pages
+    url: ${{ steps.deployment.outputs.page_url }}
+  runs-on: ubuntu-latest
+  needs: build
+  steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
+  

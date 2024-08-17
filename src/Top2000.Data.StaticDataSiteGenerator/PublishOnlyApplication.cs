@@ -11,7 +11,7 @@ public sealed class PublishOnlyApplication : IRunApplication
 
     public async Task RunAsync()
     {
-        var location = $"output";
+        var location = $"_site";
 
         if (Directory.Exists(location))
         {
