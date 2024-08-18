@@ -11,7 +11,7 @@
     <Description>Create an auto upgradable client database based on Top2000 Data</Description>
     <Copyright>Copyright (c) Rick Neeft Development 2024</Copyright>
     <PackageProjectUrl>https://github.com/Top2000app</PackageProjectUrl>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <Authors>Rick Neeft</Authors>
     <Product>Top2000App Data</Product>
     <PackageIcon>nugeticon.png</PackageIcon>
@@ -39,10 +39,10 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
-    <PackageReference Include="morelinq" Version="4.2.0" />
+    <PackageReference Include="morelinq" Version="4.3.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
     <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
-    <PackageReference Include="System.Text.Json" Version="8.0.3" />
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
   </ItemGroup>
 
   <ItemGroup>
