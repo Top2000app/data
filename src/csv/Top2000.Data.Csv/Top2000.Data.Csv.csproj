@@ -25,11 +25,14 @@
 
   <Target Name="GenerateCsvFile" BeforeTargets="BeforeBuild">
     <Exec Command="dotnet run --project ../Top2000.Data.CsvCreator/Top2000.Data.CsvCreator.csproj" />
-    <Exec Command="del Top2000v2.db" />
   </Target>
 
   <ItemGroup>
     <None Remove="*.csv" />
     <EmbeddedResource Include="*.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="*.db" />
   </ItemGroup>
 </Project>
