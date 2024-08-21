@@ -1,13 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿sindhooraj.mooloo.sm@gmail.com
+
+57736343
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <Deterministic>true</Deterministic>
-    <PackageId>RickNeeftDevelopment.Top2000App.Csv</PackageId>
+    <PackageId>RickNeeftDevelopment.Top2000App.ClientDatabase.CSV</PackageId>
     <Description>Client database based on an embedded CSV file.</Description>
     <Copyright>Copyright (c) Rick Neeft Development 2024</Copyright>
     <PackageProjectUrl>https://github.com/Top2000app/data</PackageProjectUrl>
-    <Version>0.0.1</Version>
+    <Version>1.0.0-prerelease1</Version>
     <Authors>Rick Neeft</Authors>
     <Product>Top2000App</Product>
     <PackageIcon>nugeticon.png</PackageIcon>
