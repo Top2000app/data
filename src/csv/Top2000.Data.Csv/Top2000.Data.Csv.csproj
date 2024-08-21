@@ -28,11 +28,11 @@
   </Target>
 
   <ItemGroup>
+    <None Remove="*.db" />
     <None Remove="*.csv" />
     <EmbeddedResource Include="*.csv" />
+    <None Include="..\..\..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\..\docs\nugeticon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="*.db" />
-  </ItemGroup>
 </Project>
