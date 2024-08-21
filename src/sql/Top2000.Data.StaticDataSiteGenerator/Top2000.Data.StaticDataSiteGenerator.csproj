@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Top2000.Data.SQLScripts\Top2000.Data.SQLScripts.csproj" />
+    <ProjectReference Include="..\Top2000.Data.ClientDatabase\Top2000.Data.ClientDatabase.csproj" />
   </ItemGroup>
 
 </Project>

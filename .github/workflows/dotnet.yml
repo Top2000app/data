@@ -47,11 +47,10 @@ jobs:
       if: github.event_name != 'pull_request'
 
     - name: Run
-      run: dotnet run --no-build --verbosity normal --project ${{github.workspace}}/src/Top2000.Data.StaticDataSiteGenerator/
+      run: dotnet run --no-build --verbosity normal --project ${{github.workspace}}/src/sql/Top2000.Data.StaticDataSiteGenerator/
     
     - name: Upload pages artifact
       uses: actions/upload-pages-artifact@v1
-
 
   deploy:
     environment:
