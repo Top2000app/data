@@ -1,7 +1,4 @@
-﻿sindhooraj.mooloo.sm@gmail.com
-
-57736343
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <IsPackable>true</IsPackable>
