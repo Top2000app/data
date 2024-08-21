@@ -2,15 +2,15 @@
 
 public class Track
 {
-    public int Id { get; set; }
+    public int Id { get; init; }
 
-    public string Title { get; set; } = string.Empty;
+    public string Title { get; init; } = string.Empty;
 
-    public string Artist { get; set; } = string.Empty;
+    public string Artist { get; init; } = string.Empty;
 
-    public int RecordedYear { get; set; } = 1;
+    public int RecordedYear { get; init; } = 1;
 
-    public DateTime? LastPlayUtc { get; set; }
+    public DateTime? LastPlayUtc { get; init; }
 
-    public int FirstEdition { get; set; } = -1;
+    public int FirstEdition { get; init; }
 }

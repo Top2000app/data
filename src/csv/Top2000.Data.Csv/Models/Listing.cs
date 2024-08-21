@@ -2,7 +2,7 @@
 
 public class Listing
 {
-    public int TrackId { get; set; }
-    public int Edition { get; set; }
-    public int Position { get; set; }
+    public int TrackId { get; init; }
+    public int Edition { get; init; }
+    public int Position { get; init; }
 }

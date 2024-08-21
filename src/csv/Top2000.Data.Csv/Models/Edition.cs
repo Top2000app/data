@@ -2,5 +2,5 @@
 
 public class Edition
 {
-    public int Year { get; set; }
+    public int Year { get; init; }
 }

@@ -21,7 +21,7 @@ var allEditions = (await connection.QueryAsync<Edition>(allEditionsSql))
     .Select(x => x.Year)
     .ToList();
 
-var lastYear = allEditions.Last();
+var lastYear = allEditions[allEditions.Count - 1];
 
 var lines = new List<string>
 {
