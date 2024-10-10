@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <IsPackable>true</IsPackable>
+    <IsPackable>false</IsPackable>
     <Deterministic>true</Deterministic>
     <PackageId>RickNeeftDevelopment.Top2000App.ClientDatabase.CSV</PackageId>
     <Description>Client database based on an embedded CSV file.</Description>
