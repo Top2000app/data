@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <Deterministic>true</Deterministic>
     <PackageId>RickNeeftDevelopment.Top2000App.ClientDatabase.CSV</PackageId>
