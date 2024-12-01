@@ -1,4 +1,4 @@
-﻿var connectionString = @"Server=(localdb)\mssqllocaldb;Database=Top2000;";
+﻿var connectionString = @"Server=localhost;Database=Top2000;User Id=sa;Password=aT$0&0zYF5!Q*55N;Trust Server Certificate=True;";
 
 EnsureDatabase.For
     .SqlDatabase(connectionString);
@@ -8,22 +8,20 @@ var upgrader = DeployChanges.To
     .WithScriptEmbeddedInDataLibrary()
     .WithTransactionPerScript()
     .LogToConsole()
-    .Build();
+    .Build() ?? throw new InvalidOperationException($"upgrader is null");
 
 var result = upgrader.PerformUpgrade();
-
-var originForegroundColor = Console.BackgroundColor;
 
 if (!result.Successful)
 {
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine(result.Error.ToString());
-    Console.ForegroundColor = originForegroundColor;
+    Console.ResetColor();
     return -1;
 }
 
-Console.BackgroundColor = ConsoleColor.Green;
+Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine("Success!!");
-Console.ForegroundColor = originForegroundColor;
+Console.ResetColor();
 
 return 0;
