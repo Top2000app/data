@@ -1,29 +1,28 @@
-﻿var connectionString = @"Server=(localdb)\mssqllocaldb;Database=Top2000;";
+﻿var connectionString = Environment.GetEnvironmentVariable("Connectionstrings__Top2000")
+    ?? throw new InvalidOperationException("ConnectionStrings__Top2000 is not configured in environment variables!");
 
 EnsureDatabase.For
     .SqlDatabase(connectionString);
 
-var upgrader = DeployChanges.To
+var upgradeEngine = DeployChanges.To
     .SqlDatabase(connectionString)
     .WithScriptEmbeddedInDataLibrary()
     .WithTransactionPerScript()
     .LogToConsole()
-    .Build();
+    .Build() ?? throw new InvalidOperationException($"upgradeEngine is null");
 
-var result = upgrader.PerformUpgrade();
-
-var originForegroundColor = Console.BackgroundColor;
+var result = upgradeEngine.PerformUpgrade();
 
 if (!result.Successful)
 {
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine(result.Error.ToString());
-    Console.ForegroundColor = originForegroundColor;
+    Console.ResetColor();
     return -1;
 }
 
-Console.BackgroundColor = ConsoleColor.Green;
+Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine("Success!!");
-Console.ForegroundColor = originForegroundColor;
+Console.ResetColor();
 
 return 0;

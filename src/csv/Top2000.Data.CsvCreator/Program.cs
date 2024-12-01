@@ -1,6 +1,6 @@
 ﻿var services = new ServiceCollection()
     .AddLogging(configure => configure.AddConsole())
-    .AddOfflineClientDatabase(new DirectoryInfo(Directory.GetCurrentDirectory()))
+    .AddTop2000()
     .BuildServiceProvider()
     ;
 
@@ -25,7 +25,7 @@ var lastYear = allEditions[allEditions.Count - 1];
 
 var lines = new List<string>
 {
-    $"Id;Title;Artist;RecoredYear;LastPlayTimeUtc;{string.Join(';', allEditions)}"
+    $"Id;Title;Artist;SearchTitle;SearchArtist;RecordedYear;LastPlayTimeUtc;{string.Join(';', allEditions)}"
 };
 
 var line = new StringBuilder();
@@ -36,7 +36,7 @@ foreach (var track in allTracks)
         .Where(x => x.TrackId == track.Id)
         .ToList();
 
-    line = new StringBuilder($"{track.Id};{track.Title};{track.Artist};{track.RecordedYear};");
+    line = new StringBuilder($"{track.Id};{track.Title};{track.Artist};{track.SearchTitle ?? ""};{track.SearchArtist ?? ""};{track.RecordedYear};");
 
     var lastPlayUtcDateAndTime = trackListings.Find(x => x.Edition == lastYear)?.PlayUtcDateAndTime;
     line.Append(lastPlayUtcDateAndTime?.ToString("dd-MM-yyyy HH:mm:ss'Z'") ?? string.Empty);

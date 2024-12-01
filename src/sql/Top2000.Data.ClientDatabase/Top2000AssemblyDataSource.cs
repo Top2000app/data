@@ -20,7 +20,7 @@ public class Top2000AssemblyDataSource : ISource
 
     public async Task<SqlScript> ScriptContentsAsync(string scriptName)
     {
-        var contents = await top2000Data.GetScriptContentAsync(scriptName).ConfigureAwait(false);
+        var contents = await top2000Data.GetScriptContentAsync(scriptName);
         return new SqlScript(scriptName, contents);
     }
 }

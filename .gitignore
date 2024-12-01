@@ -395,6 +395,8 @@ FodyWeavers.xsd
 *.msp
 
 # JetBrains Rider
+.idea/
 *.sln.iml
 /src/csv/Top2000.Data.Csv/top2000.csv
 /src/csv/Top2000.Data.Csv/Top2000v2.db
+

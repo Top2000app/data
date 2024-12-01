@@ -4,38 +4,36 @@ namespace Top2000.Data.ClientDatabase;
 
 public static class ConfigureServices
 {
-    
-    public static IServiceCollection AddClientDatabase(this IServiceCollection services, DirectoryInfo appDataDirectory, string clientDatabaseName = "Top2000v2.db")
+    public static IServiceCollection AddTop2000(this IServiceCollection services,
+        Action<Top2000ServiceBuilder>? configure = null)
     {
-        services.AddHttpClient("top2000", c =>
+        var builder = new Top2000ServiceBuilder();
+
+        configure?.Invoke(builder);
+
+        services
+            .AddTransient<Top2000AssemblyDataSource>()
+            .AddTransient<IUpdateClientDatabase, UpdateDatabase>()
+            .AddTransient<ITop2000AssemblyData, Top2000Data>()
+            .AddSingleton(builder);
+
+        services.AddTransient<SQLiteAsyncConnection>(provider =>
         {
-            c.BaseAddress = new Uri("https://data.top2000.app/)");
+            var top2000Builder = provider.GetRequiredService<Top2000ServiceBuilder>();
+            var databasePath = Path.Combine(top2000Builder.Directory, top2000Builder.Name);
+
+            return new SQLiteAsyncConnection(databasePath,
+                SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create | SQLiteOpenFlags.SharedCache,
+                storeDateTimeAsTicks: false);
         });
 
-        return services
-            .AddTransient<OnlineDataSource>()
-            .AddTransient<Top2000AssemblyDataSource>()
-            .AddTransient<IUpdateClientDatabase, UpdateDatabase>()
-            .AddTransient<ITop2000AssemblyData, Top2000Data>()
-            .AddTransient<SQLiteAsyncConnection>(f =>
-            {
-                var databasePath = Path.Combine(appDataDirectory.FullName, clientDatabaseName);
+        if (builder.OnlineUpdatesEnabled)
+        {
+            services
+                .AddTransient<OnlineDataSource>()
+                .AddHttpClient("top2000", client => { client.BaseAddress = builder.UpdateUri; });
+        }
 
-                return new SQLiteAsyncConnection(databasePath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create | SQLiteOpenFlags.SharedCache, storeDateTimeAsTicks: false);
-            });
-    }
-
-    public static IServiceCollection AddOfflineClientDatabase(this IServiceCollection services, DirectoryInfo appDataDirectory, string clientDatabaseName = "Top2000v2.db")
-    {
-        return services
-            .AddTransient<Top2000AssemblyDataSource>()
-            .AddTransient<IUpdateClientDatabase, UpdateDatabase>()
-            .AddTransient<ITop2000AssemblyData, Top2000Data>()
-            .AddTransient<SQLiteAsyncConnection>(f =>
-            {
-                var databasePath = Path.Combine(appDataDirectory.FullName, clientDatabaseName);
-
-                return new SQLiteAsyncConnection(databasePath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create | SQLiteOpenFlags.SharedCache, storeDateTimeAsTicks: false);
-            });
+        return services;
     }
 }
