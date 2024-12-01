@@ -49,7 +49,7 @@ jobs:
         
     - name: Install dotnet coverage
       shell: powershell
-      run: dotnet tool install dotnet-coverage
+      run: dotnet tool install dotnet-coverage --global
 
     - name: Build and analyze
       env:
