@@ -1,16 +1,17 @@
-﻿var connectionString = @"Server=localhost;Database=Top2000;User Id=sa;Password=aT$0&0zYF5!Q*55N;Trust Server Certificate=True;";
+﻿var connectionString = Environment.GetEnvironmentVariable("Connectionstrings__Top2000")
+    ?? throw new InvalidOperationException("ConnectionStrings__Top2000 is not configured in environment variables!");
 
 EnsureDatabase.For
     .SqlDatabase(connectionString);
 
-var upgrader = DeployChanges.To
+var upgradeEngine = DeployChanges.To
     .SqlDatabase(connectionString)
     .WithScriptEmbeddedInDataLibrary()
     .WithTransactionPerScript()
     .LogToConsole()
-    .Build() ?? throw new InvalidOperationException($"upgrader is null");
+    .Build() ?? throw new InvalidOperationException($"upgradeEngine is null");
 
-var result = upgrader.PerformUpgrade();
+var result = upgradeEngine.PerformUpgrade();
 
 if (!result.Successful)
 {
