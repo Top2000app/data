@@ -1,6 +1,9 @@
 ﻿var services = new ServiceCollection()
     .AddLogging(configure => configure.AddConsole())
-    .AddTop2000()
+    .AddTop2000(builder =>
+        {
+            builder.DatabaseName("Top2000v2");
+        })
     .BuildServiceProvider()
     ;
 
