@@ -19,5 +19,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Top2000.Data.ClientDatabase\Top2000.Data.ClientDatabase.csproj" />
   </ItemGroup>
-
+ 
 </Project>
