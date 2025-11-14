@@ -1,4 +1,4 @@
-name: SonarCloud
+name: .NET
 on:
   push:
     branches: [ "main" ]
@@ -7,57 +7,21 @@ on:
     
 jobs:
   build:
-    name: Build and analyze
-    runs-on: windows-latest
+    name: Build
+    runs-on: ubuntu-latest
     steps:
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: 17
-        distribution: 'zulu' # Alternative distribution options are available.
-        
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
           dotnet-version: 10.0.x
 
     - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
-    - name: Cache SonarCloud packages
-      uses: actions/cache@v3
-      with:
-        path: ~\sonar\cache
-        key: ${{ runner.os }}-sonar
-        restore-keys: ${{ runner.os }}-sonar
+    - name: Restore dependencies
+      run: dotnet restore
 
-    - name: Cache SonarCloud scanner
-      id: cache-sonar-scanner
-      uses: actions/cache@v3
-      with:
-        path: .\.sonar\scanner
-        key: ${{ runner.os }}-sonar-scanner
-        restore-keys: ${{ runner.os }}-sonar-scanner
+    - name: Build
+      run: dotnet build --no-restore
 
-    - name: Install SonarCloud scanner
-      if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
-      shell: powershell
-      run: |
-        New-Item -Path .\.sonar\scanner -ItemType Directory
-        dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-        
-    - name: Install dotnet coverage
-      shell: powershell
-      run: dotnet tool install dotnet-coverage --global
-
-    - name: Build and analyze
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      shell: powershell
-      run: |
-        .\.sonar\scanner\dotnet-sonarscanner begin /k:"Top2000app_data" /o:"top2000app" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-        dotnet build
-        dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
-        .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
