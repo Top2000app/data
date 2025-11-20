@@ -50,7 +50,7 @@ jobs:
       run: dotnet run --no-build --verbosity normal --project ${{github.workspace}}/src/sql/Top2000.Data.StaticDataSiteGenerator/
     
     - name: Upload pages artifact
-      uses: actions/upload-pages-artifact@v1
+      uses: actions/upload-pages-artifact@v3
 
   deploy:
     environment:
